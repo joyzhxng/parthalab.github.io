@@ -1,0 +1,266 @@
+/* ==========================================================================
+   main.css  -  black and white theme for the lab website
+   Put this file at:  static/css/main.css
+   Every page needs, in its <head>, BEFORE this file:
+     - Bootstrap CSS
+     - Font Awesome CSS
+     - the Google Fonts line for Nunito Sans:
+       <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+   ========================================================================== */
+
+
+   :root {
+  --bar-bg: #000;      /* background for the navigation bar, footer and black bands */
+  /* ...keep your other colors... */
+}
+/* ---------- Colors (change here to restyle everything) ---------- */
+:root {
+  --ink:   #000;      /* main black */
+  --paper: #fff;      /* main white */
+  --grey:  #f2f2f2;   /* light band background */
+  --mid:   #555;      /* secondary text */
+  --hover: #9a9a9a;   /* grey used when other menu items dim */
+}
+
+/* ---------- Base ---------- */
+body,
+h1, h2, h3, h4, h5,
+.btn,
+.nav-link {
+  font-family: "Montserrat", sans-serif;
+}
+
+
+body { color: var(--ink); }
+a    { color: var(--ink); }
+a:hover { color: var(--mid); }
+
+/* ==========================================================================
+   NAVBAR
+   ========================================================================== */
+.custom-navbar { background: var(--ink); }
+
+.custom-navbar-brand,
+.custom-navbar-text { color: #fff !important; }
+
+/* Menu links: white. While the cursor is over the menu, the other items
+   turn grey and the item under the cursor stays white.
+   (The order of the next four rules matters.) */
+.custom-navbar .navbar-nav .custom-nav-link {
+  color: #fff !important;
+  background: transparent !important;
+  transition: color .2s;
+}
+.custom-navbar .navbar-nav .custom-nav-link.active {      /* current page: underline */
+  color: #fff !important;
+  background: transparent !important;
+  box-shadow: inset 0 -2px 0 #fff;
+}
+.custom-navbar .navbar-nav:hover .custom-nav-link {       /* menu hovered: all grey ... */
+  color: var(--hover) !important;
+  background: transparent !important;
+}
+.custom-navbar .navbar-nav .custom-nav-link:hover {       /* ... except the hovered one */
+  color: #fff !important;
+  background: transparent !important;
+}
+
+/* Mobile "Menu" button: white text on the black bar, with a CSS arrow */
+.custom-navbar .menu-label {
+  color: #fff !important;
+  margin-right: 4px;
+  font-size: 16px;
+}
+.custom-navbar .custom-navbar-toggler {
+  color: #fff;
+  background-color: transparent !important;
+  border: 0 !important;
+  box-shadow: none;
+  padding: .4rem .7rem;
+}
+.custom-navbar .custom-navbar-toggler:focus {
+  box-shadow: none;
+  outline: 1px solid #fff;
+}
+.toggle-arrow {                                   /* points down when closed, up when open */
+  display: inline-block;
+  vertical-align: middle;
+  width: .55em;
+  height: .55em;
+  margin: 0 .2rem .25em .6rem;
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  transform: rotate(45deg);
+  transition: transform .25s;
+}
+.custom-navbar-toggler[aria-expanded="true"] .toggle-arrow {
+  transform: rotate(225deg);
+  margin-bottom: 0;
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+.custom-footer {
+  background: var(--ink);
+  color: #fff;
+  padding: 20px 0;
+}
+.footer-logo      { max-width: 100px; margin-bottom: 15px; }
+.smaller-text     { font-size: 0.8em; }
+.smallest-text    { font-size: 0.7em; }
+.footer-link      { color: #fff; font-size: 0.9em; text-decoration: underline; }
+.footer-link:hover{ color: var(--hover); }
+.social-icons     { display: flex; justify-content: flex-end; gap: 20px; }
+.social-icons a   { color: #fff; font-size: 24px; }
+.social-icons a:hover { color: var(--hover); }
+
+/* ==========================================================================
+   LANDING PAGE (index.html)
+   ========================================================================== */
+
+/* Buttons */
+.btn-bw {
+  background: #fff; color: #000; border: 2px solid #fff;
+  border-radius: 0; padding: .7rem 1.6rem; font-weight: 600;
+}
+.btn-bw:hover { background: transparent; color: #fff; }
+.btn-bw-dark {
+  background: #000; color: #fff; border: 2px solid #000;
+  border-radius: 0; padding: .7rem 1.6rem; font-weight: 600;
+}
+.btn-bw-dark:hover { background: transparent; color: #000; }
+
+/* Hero carousel: rotating photos behind fixed text */
+.hero { position: relative; color: #fff; background: #222; }
+.hero .carousel-item { height: clamp(280px, 26vw, 460px); }   /* short banner: about 460px tall on a wide screen, 280px minimum on a phone */
+.hero-slide {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center; background-color: #222;
+}
+.hero-slide::after {                               /* dark overlay so white text is readable */
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.65));
+}
+.hero-content {                                    /* fixed headline above the photos */
+  position: absolute; inset: 0; z-index: 1;
+  display: flex; align-items: center;
+  pointer-events: none;                            /* lets the arrows underneath be clicked */
+}
+.hero-content a { pointer-events: auto; }
+.hero-caption {
+  position: absolute; left: 0; right: 0; bottom: 3.2rem; z-index: 1;
+  font-size: .9rem; color: #ddd; pointer-events: none;
+}
+.hero .carousel-indicators { z-index: 2; margin-bottom: 1.2rem; }
+.hero .carousel-control-prev,
+.hero .carousel-control-next { z-index: 2; width: 8%; }
+.hero h1 { font-size: clamp(2.2rem, 6vw, 4.2rem); line-height: 1.1; max-width: 18ch; }
+.hero p  { font-size: 1.2rem; max-width: 46ch; margin-top: 1.25rem; }
+
+/* White-background figure slide (add data-light="true" to its carousel-item) */
+.hero { transition: color .3s; }
+.hero-slide--light { background: #fff; }
+.hero-slide--light::after { display: none; }              /* no dark overlay on the white slide */
+.hero-slide-img {                                         /* whole image, never cropped */
+  position: absolute; left: 50%; top: 46%;
+  transform: translate(-50%, -50%);
+  width: min(92%, 1200px); height: auto; max-height: 62%;
+  object-fit: contain;
+}
+.hero-light { color: #000; }                              /* text turns dark on a white slide */
+.hero-light .hero-content { align-items: flex-start; padding-top: 2.5rem; }
+.hero-light .hero-caption { color: #444; }
+.hero-light .carousel-indicators [data-bs-target] { background-color: #000; }
+.hero-light .carousel-control-prev-icon,
+.hero-light .carousel-control-next-icon { filter: invert(1); }
+
+/* Full-width bands */
+.band       { padding: 5rem 0; }
+.band-grey  { background: var(--grey); }
+.band-black { background: #000; color: #fff; }
+.band h2    { font-size: clamp(1.8rem, 4vw, 2.6rem); margin-bottom: 1rem; }
+.lead-narrow{ max-width: 62ch; }
+
+/* Four focus blocks */
+.focus-icon { font-size: 2.4rem; margin-bottom: 1rem; }
+.focus h3   { font-size: 1.25rem; }
+.focus p    { color: var(--mid); margin-bottom: 0; }
+
+/* Featured project */
+.featured-img { width: 100%; height: 100%; min-height: 280px; object-fit: cover; background: #444; }
+
+/* News items (for the news page; copy the pattern from the template) */
+.news-item      { border-top: 2px solid #000; padding: 1.1rem 0 1.5rem; height: 100%; }
+.news-date      { font-size: .85rem; color: var(--mid); }
+.news-item h3   { font-size: 1.2rem; margin: .4rem 0 .6rem; }
+.news-item h3 a { color: #000; text-decoration: none; }
+.news-item h3 a:hover { text-decoration: underline; }
+
+/* ==========================================================================
+   MEMBERS PAGE (cards that link to a person's page)
+   ========================================================================== */
+.team-card { border: none; text-align: center; }
+
+.team-card-img {
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  width: 14rem;
+  height: 14rem;
+  display: block;
+  margin: auto;
+  box-shadow: 0 0 10px 5px #ccc;
+  transition: box-shadow 0.2s;
+}
+
+.profile-link { color: #000; text-decoration: none; }
+.profile-link .fas,
+.profile-link .team-card-title,
+.profile-link .team-card-img { transition: color 0.2s, box-shadow 0.2s; }
+.profile-link:focus .fas,
+.profile-link:hover .fas { color: var(--mid); }
+.profile-link:focus .team-card-img,
+.profile-link:hover .team-card-img { box-shadow: 0 0 10px 5px #000; }
+
+.team-card-body { padding: 15px; }
+.team-social-icons { font-size: 18px; }
+.team-social-icon { margin: 0 10px; color: #000; text-decoration: none; }
+.team-social-icon:hover { color: var(--mid); }
+
+/* Social links on an individual member page */
+.social-link { color: #000; text-decoration: none; }
+.social-link:hover { color: var(--mid); }
+
+/* ==========================================================================
+   RESEARCH PAGE (icon menu at the top)
+   ========================================================================== */
+.text-center h1 { color: #000; font-weight: bold; }
+
+.nav-icon {
+  color: #333;
+  cursor: pointer;
+  transition: color 0.3s, transform 0.3s;
+}
+.nav-icon:hover { color: #000; transform: scale(1.1); }
+.nav-icon p {
+  margin-top: 10px;
+  font-size: 1.2rem;
+  color: #333;
+  transition: color 0.3s;
+}
+.nav-icon:hover p { color: #000; }
+.custom-icon-link { display: inline-block; text-align: center; }
+
+/* Misc */
+.twitter-scroll { max-height: 500px; overflow-y: auto; }
+
+/* MAPS*/
+.map-frame { width: 100%; height: 320px; border: 0; display: block; margin-bottom: .5rem; }
+
+/* Larger body text on all pages */
+main p,
+main li {
+  font-size: 1.15rem;
+  line-height: 1.7;
+}
