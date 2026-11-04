@@ -1,7 +1,7 @@
 # parthalab.github.io
 Repo for Parthalab
 
-Below are descriptions of each section of the website that can be modified/customized
+Below are descriptions of each section of the website that can be modified/customized; within code, green comments are more detailed descriptions on the editable options.
 
 ## Homepage 
 - hero with carousel
