@@ -18,34 +18,9 @@ Below are descriptions of each section of the website that can be modified/custo
 
 ## Publications
 This page has three components: html, js, json files.
-Html: acts as the container
+Html: acts as the monitor
 Json: updatable catalog of all the publications
-{
-  "publications": [
-    {
-      "year": 2025,
-      "authors": "Lastname, F., Lastname, F., & Parthasarathy, A.",
-      "title": "Title of the first sample paper goes here.",
-      "venue": "Journal Name, 00(0), 000-000.",
-      "tags": ["aging", "evoked-potentials"],
-      "links": {
-        "pdf": "https://example.com/replace-with-pdf-link.pdf",
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/00000000/",
-        "www": "https://doi.org/replace-with-doi"
-      }
-    },
-    {
-      "year": 2024,
-      "authors": "Lastname, F., & Parthasarathy, A.",
-      "title": "Title of the second sample paper goes here.",
-      "venue": "bioRxiv. Preprint.",
-      "preprint": true,
-      "tags": ["speech-in-noise", "synaptopathy"],
-      "links": { "www": "https://doi.org/replace-with-doi" }
-    }
-  ]
-}
-
+js: connects the two files to order and filter the papers
 
 ## news
 News is divided into four sections: Lab News, Press Releases and Media Coverage, Awards, and a Photo Gallery.
