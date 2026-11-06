@@ -32,8 +32,8 @@ To add a paper:
 2. paste above newest entry
 3. edit according to prompt
 4. if pdf avaialble: add to static folder. route to "static/pdf/pdf name"
-5. if pubmed avaialble: add to pubmed section
-6. if website available: add to wwww section
+5. if pubmed avaialble: add to pubmed section as pubmed url
+6. if website available: add to paper section as an url
 
 ## news
 News is divided into four sections: Lab News, Press Releases and Media Coverage, Awards, and a Photo Gallery.
